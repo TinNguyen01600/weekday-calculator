@@ -21,6 +21,9 @@ without using any time-related third party or library.</li>
 
 <h2># Installation instructions</h2>
 <ol>
-<li>Download all 3 files</li>
+<li>Download the source code of the application</li>
 <li>Create a folder name <em>Weekday_calculator</em></li>
+<li>Copy the ZIP file, whose name is weekday-calculator-master.zip, to the <em>Weekday_calculator<em> made previously</li>
+<li>Extract the ZIP file</li>
+<li>You should see there are 5 files in total</li>
 </ol>
