@@ -1,4 +1,4 @@
-<head>WEEKDAY CALCULATOR</head>
+<h1>WEEKDAY CALCULATOR</h1>
 <br>
 
 <h2># General Information</h2>
@@ -11,8 +11,10 @@
 
 <h2># General Description</h2>
 <pre>
-This application will allow user to define weekday (Monday, Tuesday, Wednesday, ...) of any day in the history, or even in the future, without using any time-related third party or library.
-This application is inspired by this video <a href = "https://www.youtube.com/watch?v=z2x3SSBVGJU&t=182s"></a>
+This application will allow user to define weekday (Monday, Tuesday, Wednesday, ...) 
+of any day in the history, or even in the future, 
+without using any time-related third party or library.
+This application is inspired by this <a href = "https://www.youtube.com/watch?v=z2x3SSBVGJU&t=182s">video</a>
 from channel <a href = "https://www.youtube.com/channel/UCoxcjq-8xIDTYp3uz647V5A">Numberphile</a>
 </pre>
 
