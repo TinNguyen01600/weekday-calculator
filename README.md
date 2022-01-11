@@ -27,3 +27,12 @@ without using any time-related third party or library.</li>
 <li>Extract the ZIP file</li>
 <li>You should see there are 5 files in total</li>
 </ol>
+
+<h2># Operation instructions</h2>
+3rd party library needed: <stdio.h>; <windows.h>.
+<ol>
+<li>Open command window cmd</li>
+<li>Go to the <em>Weekday_calculator<em> file, using command line <em>cd Weekday_calculator<em>.</li>
+<li>List all files in this folder, using command line <em>ls -l<em>. (There should be 5 files including 2 .c files, 1 .h file, 
+1 hidden file .gitignore and 1 .md file)</li>
+</ol>
