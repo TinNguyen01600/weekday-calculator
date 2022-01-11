@@ -29,10 +29,13 @@ without using any time-related third party or library.</li>
 </ol>
 
 <h2># Operation instructions</h2>
-3rd party library needed: <stdio.h>; <windows.h>.
+3rd party library needed: stdio.h; windows.h.
 <ol>
 <li>Open command window cmd</li>
 <li>Go to the <em>Weekday_calculator<em> file, using command line <em>cd Weekday_calculator<em>.</li>
 <li>List all files in this folder, using command line <em>ls -l<em>. (There should be 5 files including 2 .c files, 1 .h file, 
 1 hidden file .gitignore and 1 .md file)</li>
+<li>Compile all .c files for execution using command line <em>gcc *.c *.h -o main -lm -I.<em></li>
+<li>A new .exe file is made.</li>
+<li>Execute the applicaiton, using command line <em>main.exe<em>.</li>
 </ol>
