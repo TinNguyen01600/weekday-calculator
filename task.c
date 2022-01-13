@@ -15,21 +15,29 @@ void change_to_wday(int n)
 }
 
 void read_date(struct Date *search){
-    char c1,c2;
-    int day, month;
+    char c1,c2, c3;
+    int day, month, year;
     int value = 0;
     char input[100];
-    while (value == 0){
-        printf("Enter a date (format dd/mm/yyyy): ");
+    while (value == 0)
+    {
+        printf("Enter a date (format dd/mm/yyyy or dd.mm.yyyy): ");
         fgets(input, sizeof(input), stdin);
-        sscanf(input, "%d%c%d%c", &day, &c1, &month, &c2);
-        if((int)c1 != 10 ){ value = 0;}
-        else {break;}
-        printf("Invalid input !!! Please try again.\n");
-    }
+        sscanf(input, "%d%c%d%c%d%c", &day, &c1, &month, &c2, &year, &c3);
 
+        if((c1 == '.' && c2 == '.') || (c1 == '/' && c2 == '/')){ value++;}
+        if((int)c3 == 10 ){ value++;}   //ensure that there is no more symbol or number after year (Enter is pressed)
+        if(month <= 12 && month >= 1){ value++;}
+
+        if (value == 3){ break;}      //check if all 3 criteria are satisfied
+        else {
+          value = 0;
+          printf("Invalid input !!! Please try again.\n");
+        }     
+    }
     search->day = day;
     search->month = month;
+    search->year = year;
 }
 
 void loop()
@@ -37,7 +45,7 @@ void loop()
     struct Date Doomsday, search;
     
     read_date(&search);
-    printf("%d %d", search.day, search.month);
+    printf("%d %d %d", search.day, search.month, search.year);
 
     //Doomsday.wday = (3 + ((x-2000) + (x-2000) / 4) % 7) % 7;
     //change_to_wday(Doomsday.wday);
