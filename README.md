@@ -29,7 +29,7 @@ without using any time-related third party or library.</li>
 </ol>
 
 <h2># Operation instructions</h2>
-3rd party library needed: stdio.h; windows.h.
+3rd party library needed: stdio.h; windows.h; stdbool.h
 <ol>
 <li>Open command window cmd</li>
 <li>Go to the <em>Weekday_calculator</em> file, using command line <em>cd Weekday_calculator</em>.</li>
