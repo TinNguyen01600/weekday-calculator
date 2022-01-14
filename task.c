@@ -14,6 +14,34 @@ void change_to_wday(int n)
   }
 }
 
+bool check_month_31(int month){
+  int month_31[7] = {1, 3, 5, 7, 8, 10, 12};
+  for (int i = 0; i<7; i++){
+    if (month == month_31[i]){ return true; break;}
+  }
+  return false;
+}
+
+bool check_month_30(int month){
+  int month_30[4] = {4, 6, 9, 11};
+  for (int i = 0; i<4; i++){
+    if (month == month_30[i]){ return true; break;}
+  }
+  return false;
+}
+
+bool check_valid_date(int day, int month, int year){
+  int value = 0;
+  if (day > 0 && month > 0 && year > 0){ value++; }
+  if (check_month_31(month) && day <= 31){ value++; }
+  else if (month == 2 && day <= 28){ value++; }
+  else if(check_month_30(month) && day <= 30){ value++; }
+
+
+  if (value == 2) return true;
+  else return false;
+}
+
 void read_date(struct Date *search){
     char c1,c2, c3;
     int day, month, year;
@@ -27,9 +55,8 @@ void read_date(struct Date *search){
 
         if((c1 == '.' && c2 == '.') || (c1 == '/' && c2 == '/')){ value++;}
         if((int)c3 == 10 ){ value++;}   //ensure that there is no more symbol or number after year (Enter is pressed)
-        if(month <= 12 && month >= 1){ value++;}
 
-        if (value == 3){ break;}      //check if all 3 criteria are satisfied
+        if (check_valid_date(day, month, year) && value == 2){ break;}      
         else {
           value = 0;
           printf("Invalid input !!! Please try again.\n");
