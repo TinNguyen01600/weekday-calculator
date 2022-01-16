@@ -17,3 +17,4 @@ void read_date(struct Date *);               // This function is used to read th
 bool check_valid_date(int, int, int);       //check if the date entered is valid
 bool check_month_31(int);                 //This function is used to check if the month entered has 31 days to ensure that the day entered is valid.
 bool check_month_30(int);                   //same as check_month_31() but for 30-days months
+bool leap_year(int);                        //check if the entered year is leap year

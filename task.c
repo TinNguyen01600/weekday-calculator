@@ -30,12 +30,21 @@ bool check_month_30(int month){
   return false;
 }
 
+bool leap_year(int year){
+  if(year % 100 == 0 && year % 400 == 0){return true;}
+  else if(year % 4 == 0){return true;}
+  else return false;
+}
+
 bool check_valid_date(int day, int month, int year){
   int value = 0;
   if (day > 0 && month > 0 && year > 0){ value++; }
   if (check_month_31(month) && day <= 31){ value++; }
-  else if (month == 2 && day <= 28){ value++; }
   else if(check_month_30(month) && day <= 30){ value++; }
+  else if (month == 2){
+    if(leap_year(year) && day <= 29){ value++; }
+    else if(day <= 28){ value++; }
+  }
 
 
   if (value == 2) return true;
