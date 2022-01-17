@@ -2,7 +2,8 @@
 #include <windows.h>
 #include <stdbool.h>
 
-enum week{Sun = 1, Mon, Tue, Wed, Thu, Fri, Sat}; //macro definition
+enum week{Sun = 1, Mon, Tue, Wed, Thu, Fri, Sat}; //macro definition for weekdays
+enum month {Jan = 1, Feb, Mar, April, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec};      //macro definition for months
 
 struct Date {
     int wday;
