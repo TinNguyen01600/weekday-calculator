@@ -79,15 +79,73 @@ void read_date(struct Date *search){
 struct Date * calculate_wday(struct Date *search, struct Date *Doomsday)
 {
   Doomsday->year = search->year;
-    if(Doomsday->year < 2000){
-      Doomsday->wday = (3 - ((2000-Doomsday->year) + (2000-Doomsday->year) / 7) % 7) % 7;
-    }
-    else {
-      Doomsday->wday = (3 + ((Doomsday->year-2000) + (Doomsday->year-2000) / 4) % 7) % 7;
-    }
+  if(Doomsday->year >= 2000){
+    Doomsday->wday = (3 + ((Doomsday->year-2000) + (Doomsday->year-2000) / 4) % 7) % 7;
+  }
+  else {
+    Doomsday->wday = (2 - ((2000-Doomsday->year) + (2000-Doomsday->year) / 4) % 7) % 7;
+  }
   
+  switch ((*search).month)
+  {
+  case Jan:
+    if(leap_year((*search).year)) (*Doomsday).day = 4;
+    else  (*Doomsday).day = 3;
+    break;
+  
+  case Feb:
+    if(leap_year((*search).year)) (*Doomsday).day = 29;
+    else  (*Doomsday).day = 28;
+    break;
 
-  return Doomsday;
+  case Mar:
+    (*Doomsday).day = 14;
+    break;
+
+  case April:
+    (*Doomsday).day = 4;
+    break;
+
+  case May:
+    (*Doomsday).day = 9;
+    break;
+
+  case Jun:
+    (*Doomsday).day = 6;
+    break;
+
+  case Jul:
+    (*Doomsday).day = 11;
+    break;
+
+  case Aug:
+    (*Doomsday).day = 8;
+    break;
+
+  case Sep:
+    (*Doomsday).day = 5;
+    break;
+
+  case Oct:
+    (*Doomsday).day = 10;
+    break;
+
+  case Nov:
+    (*Doomsday).day = 7;
+    break;
+
+  case Dec:
+    (*Doomsday).day = 12;
+    break;
+
+  default:
+    break;
+  }
+
+  int k = (*search).day - (*Doomsday).day + 14;     //k is the number of days difference between the search date and doomsday.
+
+  (*search).wday = ((*Doomsday).wday + k) % 7;
+  return search;
 }
 
 void loop()
@@ -99,5 +157,5 @@ void loop()
 
     calculate_wday(&search, &Doomsday);
     
-    change_to_wday(Doomsday.wday);
+    change_to_wday(search.wday);
 }
