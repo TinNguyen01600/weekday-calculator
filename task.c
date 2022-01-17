@@ -76,6 +76,20 @@ void read_date(struct Date *search){
     search->year = year;
 }
 
+struct Date * calculate_wday(struct Date *search, struct Date *Doomsday)
+{
+  Doomsday->year = search->year;
+    if(Doomsday->year < 2000){
+      Doomsday->wday = (3 - ((2000-Doomsday->year) + (2000-Doomsday->year) / 7) % 7) % 7;
+    }
+    else {
+      Doomsday->wday = (3 + ((Doomsday->year-2000) + (Doomsday->year-2000) / 4) % 7) % 7;
+    }
+  
+
+  return Doomsday;
+}
+
 void loop()
 {
     struct Date Doomsday, search;
@@ -83,12 +97,7 @@ void loop()
     read_date(&search);
     //printf("%d %d %d", search.day, search.month, search.year);
 
-    Doomsday.year = search.year;
-    if(Doomsday.year < 2000){
-      Doomsday.wday = (3 - ((2000-Doomsday.year) + (2000-Doomsday.year) / 7) % 7) % 7;
-    }
-    else {
-      Doomsday.wday = (3 + ((Doomsday.year-2000) + (Doomsday.year-2000) / 4) % 7) % 7;
-    }
+    calculate_wday(&search, &Doomsday);
+    
     change_to_wday(Doomsday.wday);
 }
