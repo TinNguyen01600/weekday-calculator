@@ -148,14 +148,36 @@ struct Date * calculate_wday(struct Date *search, struct Date *Doomsday)
   return search;
 }
 
+void keyboard_hit()
+{
+    system("cls");
+    int ch;
+    printf("Press ENTER to start\n");
+    printf("Press ESC to exit\n");
+    while(1){
+        if ( kbhit() ) {
+            // Stores the pressed key in ch
+            ch = getch();
+            // when escape is pressed
+            if ((int)ch == 27)
+                exit(0);
+            // when enter is pressed
+            if ((int)ch == 13)
+                break;
+        }
+    }
+}
+
 void loop()
 {
+    keyboard_hit();
+
     struct Date Doomsday, search;
     
     read_date(&search);
-    //printf("%d %d %d", search.day, search.month, search.year);
-
     calculate_wday(&search, &Doomsday);
-    
     change_to_wday(search.wday);
+
+    Sleep(1000);
+    loop();
 }
